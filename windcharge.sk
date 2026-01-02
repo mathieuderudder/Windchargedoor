@@ -1,0 +1,12 @@
+on explode:
+    # 1. Check of de explosie komt van een Wind Charge
+    if "%event-entity%" contains "wind_charge" or "wind charge":
+        
+        # 2. Loop door alle blokken die de explosie wil veranderen
+        loop exploded blocks:
+            set {_b} to "%type of loop-block%"
+            
+            # 3. Als er een deur of knop in de explosie zit, stop de hele explosie
+            if {_b} contains "door" or "button" or "lever" or "gate":
+                cancel event
+                stop
